@@ -24,11 +24,55 @@
 
 下方是别人主页的一个[https://people.kth.se/~euhanna/index.jemdoc demo]（正好是我们学校的一个老师hhhh），可以将其复制到你刚创建好的index.jemdoc中，然后根据他的框架进行删改内容。\n
 
+~~~
+{}{img_left}{as2.JPG}{1000px}{700px}
+~~~
+
 再创建一个名为[https://people.kth.se/~euhanna/MENU MENU]的文件，并放入同一文件夹，这样之后生成的html页面左侧会多出一列菜单。\n
+
+~~~
+{}{img_left}{as3.JPG}{1000px}{700px}
+~~~
+
+在终端进入你刚刚新建的文件夹，并输入+python2 jemdoc.py index.jemdoc+\n
+在执行过后，会生成一个html文件，点开就可以看到个人主页的内容了。\n
 
 Tips:\n
 1.这里我是用vscode编辑.jemdoc文件，有更好的工具欢迎交流。\n
 2.网上看到别人说这个MENU是可选项，但我好像没有这个文件无法编译，如果不需要菜单可以把MENU里面的内容删掉。\n
 3.注意这里MENU文件没有后缀名。\n
+4.除非你安装的python版本是python2的，否则命令必须用python2，而不能用python。即不可以在命令行输入python jemdoc.xxxxxxxxxxx。\n
 \n
-在终端进入你刚刚
+现在进行步骤2，将html和xxx.github.io绑定。\n
+在Github中新建一个repository，命名为xxx.github.io，xxx为你的github用户名，然后将仓库克隆到本地，再把刚刚新建的文件夹里面的文件全部放进去，最后上传到远程仓库即可，[https://zhuanlan.zhihu.com/p/161087743 git教程]可参考这里。（我就是用的这个教程hhhh，老师讲的太细了）\n
+每次在本地修改自己的jemdoc文件里面的内容，然后再用python编译之后，即可通过以下方式更新到github，即更新到最新主页网址里：
+
+在终端中打开本地仓库，输入下列命令，输入一行执行一行\n
++git add *+\n
++git commit -m 'xxx（本次更新内容）'+\n
++git push+\n
+
+稍过几分钟，你点开https://xxx.github.io即可看到你自己的学术主页了。\n
+
+需要注意的是，在初次安装好git后，建议修改用户信息，这样通过git更新信息后每次在github中显示的贡献者会是自己的账号。\n
+
++git config --global user.name "xxx"+\n
++git config --global user.email xxx@xxx.com+\n
+
+====  题外话：index.jemdoc修改指南
+[http://jemdoc.jaboc.net/extra.html 官方的Guide]里，主要看左侧example page, chear sheet, extra syntax这三个部分。\n
+
+几个常用的cheatsheet：\n
++= xxx  标题+\n
++～     手动空格，可用于对齐+\n
++*xxx*  粗体+\n
++\[https://www.xxx.com yyy] 超链接，前者是网址，然后空一格，yyy是超链接名称+\n
++.      自动标号，譬如，第一行是“. abcdefg”，然后另起一行“. ABCDEFG”，这两行开头会自动标号+\n
++\\n    换行+\n
++插入图片时，demo如下\n+
++{}{img_left}{bio.jpg}{alt text}{131px}{160px}{http://people.kth.se/~euhanna/}+\n
++将bio.jpg放入相同文件夹内即可，最后一个网址是点击图片的网址导航，可以为空。+\n
+
+点击MENU里其他菜单时，比如有一个子菜单Research，Reseach对应的research.html文件，其创建方法和index.html一样，先创建research.jemdoc，然后生成对应的html即可。注意，一定要在同一个文件夹内。\n
+
+以上就是利用Jemdoc+Github在mac端搭建个人主页的方法，在windows环境下，操作步骤也是大致相似的。希望以上内容能够对想搭建学术主页却无从下手的同学有所帮助。\n

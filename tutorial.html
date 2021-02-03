@@ -29,13 +29,47 @@
 <p>首先打开<a href="https://jemdoc.jaboc.net/">Jemdoc官网</a>，左上角download部分，将<a href="https://jemdoc.jaboc.net/dist/jemdoc.py">jemdoc.py</a>和<a href="https://jemdoc.jaboc.net/dist/jemdoc.css">example css file</a>文件保存下来，并放在同一个文件夹中。<br /></p>
 <p>新建一个文本文件并放入刚刚新建文件夹中，命名为index，后缀改为jemdoc，即index.jemdoc，此文件之后会用来生成你的html主页文件。（命名可根据自己喜好）<br /></p>
 <p>下方是别人主页的一个<a href="https://people.kth.se/~euhanna/index.jemdoc">demo</a>（正好是我们学校的一个老师hhhh），可以将其复制到你刚创建好的index.jemdoc中，然后根据他的框架进行删改内容。<br /></p>
+<table class="imgtable"><tr><td>
+<img src="as2.JPG" alt="1000px" width="700px" />&nbsp;</td>
+<td align="left"></td></tr></table>
 <p>再创建一个名为<a href="https://people.kth.se/~euhanna/MENU">MENU</a>的文件，并放入同一文件夹，这样之后生成的html页面左侧会多出一列菜单。<br /></p>
+<table class="imgtable"><tr><td>
+<img src="as3.JPG" alt="1000px" width="700px" />&nbsp;</td>
+<td align="left"></td></tr></table>
+<p>在终端进入你刚刚新建的文件夹，并输入<tt>python2 jemdoc.py index.jemdoc</tt><br />
+在执行过后，会生成一个html文件，点开就可以看到个人主页的内容了。<br /></p>
 <p>Tips:<br />
 1.这里我是用vscode编辑.jemdoc文件，有更好的工具欢迎交流。<br />
 2.网上看到别人说这个MENU是可选项，但我好像没有这个文件无法编译，如果不需要菜单可以把MENU里面的内容删掉。<br />
 3.注意这里MENU文件没有后缀名。<br />
+4.除非你安装的python版本是python2的，否则命令必须用python2，而不能用python。即不可以在命令行输入python jemdoc.xxxxxxxxxxx。<br />
 <br />
-在终端进入你刚�</p>
+现在进行步骤2，将html和xxx.github.io绑定。<br />
+在Github中新建一个repository，命名为xxx.github.io，xxx为你的github用户名，然后将仓库克隆到本地，再把刚刚新建的文件夹里面的文件全部放进去，最后上传到远程仓库即可，<a href="https://zhuanlan.zhihu.com/p/161087743">git教程</a>可参考这里。（我就是用的这个教程hhhh，老师讲的太细了）<br />
+每次在本地修改自己的jemdoc文件里面的内容，然后再用python编译之后，即可通过以下方式更新到github，即更新到最新主页网址里：</p>
+<p>在终端中打开本地仓库，输入下列命令，输入一行执行一行<br />
+<tt>git add *</tt><br />
+<tt>git commit -m 'xxx（本次更新内容）&rsquo;</tt><br />
+<tt>git push</tt><br /></p>
+<p>稍过几分钟，你点开https:<i></i>xxx.github.io即可看到你自己的学术主页了。<br /></p>
+<p>需要注意的是，在初次安装好git后，建议修改用户信息，这样通过git更新信息后每次在github中显示的贡献者会是自己的账号。<br /></p>
+<p><tt>git config &ndash;global user.name &ldquo;xxx&rdquo;</tt><br />
+<tt>git config &ndash;global user.email xxx@xxx.com</tt><br /></p>
+<h4>题外话：index.jemdoc修改指南</h4>
+<p><a href="http://jemdoc.jaboc.net/extra.html">官方的Guide</a>里，主要看左侧example page, chear sheet, extra syntax这三个部分。<br /></p>
+<p>几个常用的cheatsheet：<br />
+<tt>= xxx  标题</tt><br />
+<tt>～     手动空格，可用于对齐</tt><br />
+<tt><b>xxx</b>  粗体</tt><br />
+<tt>[https:<i></i>www.xxx.com yyy] 超链接，前者是网址，然后空一格，yyy是超链接名称</tt><br />
+<tt>.      自动标号，譬如，第一行是“. abcdefg”，然后另起一行“. ABCDEFG”，这两行开头会自动标号</tt><br />
+<tt>
+    换行</tt><br />
+<tt>插入图片时，demo如下<br /></tt>
+<tt>{}{img_left}{bio.jpg}{alt text}{131px}{160px}{http:<i></i>people.kth.se<i>&nbsp;euhanna</i>}</tt><br />
+<tt>将bio.jpg放入相同文件夹内即可，最后一个网址是点击图片的网址导航，可以为空。</tt><br /></p>
+<p>点击MENU里其他菜单时，比如有一个子菜单Research，Reseach对应的research.html文件，其创建方法和index.html一样，先创建research.jemdoc，然后生成对应的html即可。注意，一定要在同一个文件夹内。<br /></p>
+<p>以上就是利用Jemdoc+Github在mac端搭建个人主页的方法，在windows环境下，操作步骤也是大致相似的。希望以上内容能够对想搭建学术主页却无从下手的同学有所帮助。</p>
 </td>
 </tr>
 </table>
